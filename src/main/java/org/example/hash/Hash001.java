@@ -4,6 +4,10 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/**
+ * 해시 유형 문제 : 폰켓몬
+ * 출처: https://school.programmers.co.kr/learn/courses/30/lessons/1845
+ * */
 public class Hash001 {
     public int solution(int[] nums) {
 
