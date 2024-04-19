@@ -5,23 +5,24 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Hash001 {
-    public int solution() {
-        int[] nums = {3,3,3,2,2,4};
+    public int solution(int[] nums) {
 
-        Map<Integer, Integer> map2 = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0 ; i < nums.length ; i++ ){
-            if (map2.containsKey(nums[i])) {
-                map2.put(nums[i], map2.get(nums[i]) + 1);
+            if (map.containsKey(nums[i])) {
+                map.put(nums[i], map.get(nums[i]) + 1);
             } else {
-                map2.put(nums[i], 1);
+                map.put(nums[i], 1);
             }
         }
 
-        Map<Integer, Long> map = Arrays.stream(nums)
-                .boxed()
-                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        /**
+         * stream 을 이용한 방법
+         * Map<Integer, Long> map = Arrays.stream(nums).boxed()
+                                          .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        */
 
-        return Math.max(map.size(), (nums.length / 2));
+        return Math.min(map.size(), (nums.length / 2));
 
     }
 }
