@@ -3,14 +3,12 @@ package org.example.hash;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * 문제: 베스트앨범
+ * 출처: https://school.programmers.co.kr/learn/courses/30/lessons/42579
+ * */
 public class Hash005 {
-    public int[] solution() {
-//        String[] genres = {"classic", "pop", "classic", "classic", "pop"};
-        String[] genres = {"A", "A", "B", "A", "B", "B"};
-
-//        int[] plays = {500, 600, 150, 800, 2500};
-        int[] plays = {5, 5, 6, 5, 7, 7};
-
+    public int[] solution(String[] genres, int[] plays) {
         List<Integer> answer = new ArrayList<>();
 
         Map<String, Map<Integer, Integer>> genreOfPriorityMap = new HashMap<>();
@@ -33,13 +31,13 @@ public class Hash005 {
             }
         }
 
-        List<String> genreOfTop2 = genreOfTotalPlaysMap.entrySet()
-                                                       .stream()
-                                                       .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                                                       .map(Map.Entry::getKey)
-                                                       .collect(Collectors.toList());
+        List<String> genreOfTop = genreOfTotalPlaysMap.entrySet()
+                                                      .stream()
+                                                      .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                                                      .map(Map.Entry::getKey)
+                                                      .collect(Collectors.toList());
 
-        for (String genre : genreOfTop2) {
+        for (String genre : genreOfTop) {
             List<Integer> indexOfPlays = genreOfPriorityMap.get(genre)
                                                            .entrySet()
                                                            .stream()
